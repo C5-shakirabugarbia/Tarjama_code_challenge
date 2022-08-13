@@ -8,12 +8,13 @@
     color: aliceblue;
     background-color: hsl(0, 0%, 31%);
     padding: 2px;
+    position: sticky;
 }
 .userName{
-    font-size: 30px;
-    margin-left: 2%;
-    cursor: pointer;
-    width: 37%;
+ font-size: 30px;
+  margin-left: 2%;
+ cursor: pointer;
+ width: 50%;
 }
 .sideBar{
     display: flex;
@@ -21,13 +22,30 @@
     flex-wrap: wrap
 }
 .sideBarlist{
-    flex: 1 0 17rem;
-    background-color: aqua;
+    flex: 0 1 17rem;
+    background-color: #f1f1f1;
+    min-height: 44rem;
 }
 .homecontent{
 
-    flex: 1 0 52rem;
+    flex: 1 0 75%;
 
-    background-color: black;
+   
+}
 
+.sideBarlist li{
+    text-align: center;
+    height: 48px;
+   
+    padding-top: 4%;
+   
+}
+.sideBarlist li:hover{
+    background-color: #6055a5;
+    color: #fff
+   
+}
+.firstList{
+    background-color: #6055a5;
+    color: #fff
 }
