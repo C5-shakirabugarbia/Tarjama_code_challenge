@@ -17,6 +17,15 @@ const Home = () => {
           Welcome back <span>{name}</span>
         </p>
       </div>
+      <div className="sideBar">
+        <ul className="sideBarlist">
+          <li className="firstList">Tools</li>
+          <li>users</li>
+          <li>posts</li>
+          <li>logout</li>
+        </ul>
+        <div className="homecontent"> hi content</div>
+      </div>
     </div>
   );
 };
