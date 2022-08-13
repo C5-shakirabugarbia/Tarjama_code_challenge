@@ -1,0 +1,17 @@
+.homeCon{
+    display: flex;
+    flex-direction: column;
+   
+
+}
+.head{
+    color: aliceblue;
+    background-color: hsl(0, 0%, 31%);
+    padding: 2px;
+}
+.userName{
+    font-size: 30px;
+    margin-left: 2%;
+    cursor: pointer;
+    width: 37%;
+}

@@ -1,12 +1,3 @@
-.bg{
-    background-image: url(https://raw.githubusercontent.com/rudyjm3/intro-component-with-signup-form/main/images/bg-intro-desktop.png);
-    background-color:hsl(0, 0%, 2%);
-    min-height: 768px;
-}
-.logpage{
-    display: flex;
-    flex-wrap: wrap;
-}
 .form{
     display: flex;
     flex-direction: column;
@@ -92,11 +83,16 @@ width: -webkit-fill-available;
     margin: 0%;
 }
 .logoImg{
-   
-    margin-top: 15%;
-    flex: 1 0 17rem;
+    margin-top: 20%;
 }
 .logForm{
     margin-top: 10%;
-    flex: 0.5 0 500px;
+}
+
+.bg{
+    background-image: url(https://raw.githubusercontent.com/rudyjm3/intro-component-with-signup-form/main/images/bg-intro-desktop.png);
+    background-color:hsl(0, 0%, 2%);
+}
+h1{
+    font-size: calc(1.375rem + 1.5vw);
 }
