@@ -1,8 +1,11 @@
+import { Row, Col, Container } from "react-bootstrap";
+import "./style.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUsers } from "../../redux/reducers/users";
+
 const Login = () => {
   const navigate = useNavigate();
   const [user, setuser] = useState("");
@@ -71,27 +74,30 @@ const Login = () => {
     getUsers();
   }, []);
   return (
-    <div>
+    <div className="bg">
       {" "}
-      <div>
-        <div>
-          <div>
-            <div>
+      <Container className="logPage">
+        <Row>
+          <Col className="logoImg" lg={6} md={6} sm={12}>
+            <div className="welcome">
               <h1>AG Blog</h1>
               <p>
                 Share your thoughts with friends and the world around you on AG
                 Blog .
               </p>
             </div>
-          </div>
-          <div>
-            <div>
+
+            {/* <img src={img} alt="big logo" className="imm" /> */}
+          </Col>
+          <Col className="logForm" lg={6} md={6} sm={12}>
+            <div className="Up">
               <p>Login to share your thoughts</p>{" "}
             </div>
-            <div>
+            <div className="form">
               <input
                 type={"text"}
                 placeholder={"User Name"}
+                className="inputs"
                 onChange={(e) => {
                   setuser(e.target.value);
                 }}
@@ -103,9 +109,11 @@ const Login = () => {
                 }}
                 type={"password"}
                 placeholder={"Password"}
+                className="inputs"
               />
 
               <button
+                className="sub"
                 onClick={() => {
                   console.log(user);
                   console.log(email);
@@ -116,9 +124,9 @@ const Login = () => {
               </button>
               <p>{message}</p>
             </div>
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };
