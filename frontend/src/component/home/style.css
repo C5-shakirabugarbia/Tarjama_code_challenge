@@ -9,6 +9,7 @@
     background-color: hsl(0, 0%, 31%);
     padding: 2px;
     position: sticky;
+    top: 0;
 }
 .userName{
  font-size: 30px;
@@ -19,12 +20,16 @@
 .sideBar{
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap
+    flex-wrap: wrap;
+ 
 }
 .sideBarlist{
     flex: 0 1 17rem;
     background-color: #f1f1f1;
     min-height: 44rem;
+   
+    
+   
 }
 .homecontent{
 
@@ -42,7 +47,8 @@
 }
 .sideBarlist li:hover{
     background-color: #6055a5;
-    color: #fff
+    color: #fff;
+    cursor: pointer;
    
 }
 .firstList{
