@@ -1,0 +1,17 @@
+.cold{
+    margin-left: 6%;
+    margin-top: 7%;
+    margin-bottom: 2%;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 1px 15px 1rem rgba(91,164,164,.25);
+    border-left: 5px solid #5ba4a4;
+}
+
+.rowd{
+    
+    width: 75%;
+
+    margin-left: 12.5%;
+
+}

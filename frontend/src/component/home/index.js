@@ -20,7 +20,13 @@ const Home = () => {
       <div className="sideBar">
         <ul className="sideBarlist">
           <li className="firstList">Tools</li>
-          <li>users</li>
+          <li
+            onClick={() => {
+              navigate(`/users/${id}/${name}`);
+            }}
+          >
+            users
+          </li>
           <li>posts</li>
           <li>logout</li>
         </ul>
