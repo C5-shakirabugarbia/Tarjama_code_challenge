@@ -27,7 +27,7 @@
     flex: 0 1 17rem;
     background-color: #f1f1f1;
     min-height: 44rem;
-   
+   list-style-type: none;
     
    
 }
@@ -41,7 +41,9 @@
 .sideBarlist li{
     text-align: center;
     height: 48px;
-   
+   list-style: none;
+   list-style-type: none;
+   margin-left: -14%;
     padding-top: 4%;
    
 }

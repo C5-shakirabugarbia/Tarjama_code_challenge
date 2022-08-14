@@ -27,7 +27,13 @@ const Home = () => {
           >
             users
           </li>
-          <li>posts</li>
+          <li
+            onClick={() => {
+              navigate(`/posts/${id}/${name}`);
+            }}
+          >
+            posts
+          </li>
           <li>logout</li>
         </ul>
         <div className="homecontent"> </div>

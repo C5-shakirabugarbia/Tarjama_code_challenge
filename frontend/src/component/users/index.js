@@ -1,15 +1,15 @@
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import "./style.css";
 import axios from "axios";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts, setUsers, setAlbums } from "../../redux/reducers/users";
 
 import { useParams } from "react-router-dom";
 const Users = () => {
-  const { id, name } = useParams();
+  const { name } = useParams();
   const dispatch = useDispatch();
   const userState = useSelector((state) => {
     return {
