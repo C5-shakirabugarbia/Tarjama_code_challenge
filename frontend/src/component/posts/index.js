@@ -38,6 +38,7 @@ const Posts = () => {
       posts: state.users.posts,
       albums: state.users.albums,
       comments: state.users.comments,
+      isLoggedIn: state.users.isLoggedIn,
     };
   });
   const posts = () => {
@@ -79,184 +80,198 @@ const Posts = () => {
   }, []);
   return (
     <>
-      <div className="head">
-        <p className="userName">
-          Welcome back <span>{name}</span>
-        </p>
-      </div>
-      <Container className="mind">
-        {" "}
-        <Card>
-          <Card.Header>Make a Post</Card.Header>
-          <Card.Body>
-            <Card.Title>{name} What's on your mind ?</Card.Title>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label></Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="post title"
-                autoFocus
-                onChange={(e) => {
-                  setTitle(e.target.value);
-                }}
-              />
-            </Form.Group>
-            <Form.Group
-              className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
-            >
-              <Form.Label></Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={3}
-                placeholder="write your thoughts here"
-                onChange={(e) => {
-                  setbody(e.target.value);
-                }}
-              />
-            </Form.Group>
-            <Button
-              variant="primary"
-              onClick={() => {
-                if (body !== "" && title !== "") {
-                  dispatch(
-                    addPost({
-                      userId: id,
-                      title: title,
-                      body: body,
-                    })
-                  );
-                }
-              }}
-            >
-              Post
-            </Button>
-          </Card.Body>
-        </Card>
-      </Container>
-      <Container>
-        <Row>
-          {userState.posts.map((post, index) => {
-            return (
-              <Col lg={12} className="comm" key={index}>
-                <Card>
-                  <Card.Header>{post.id}</Card.Header>
-                  <Card.Body>
-                    <Card.Title>{post.title}</Card.Title>
-                    <Card.Text>{post.body}</Card.Text>
-                    {post.userId == id ? (
-                      <>
-                        {" "}
-                        <Button
-                          variant="primary"
-                          onClick={() => {
-                            dispatch(deletepost(post.id));
-                          }}
-                        >
-                          Delete
-                        </Button>
-                        <Button
-                          variant="primary"
-                          className="Ub"
-                          onClick={() => {
-                            setTheId(post.id);
-                            handleShow();
-                          }}
-                        >
-                          Update post
-                        </Button>
-                        <Modal show={show} onHide={handleClose}>
-                          <Modal.Header closeButton>
-                            <Modal.Title>Modal heading</Modal.Title>
-                          </Modal.Header>
-                          <Modal.Body>
-                            <Form>
-                              <Form.Group
-                                className="mb-3"
-                                controlId="exampleForm.ControlInput1"
-                              >
-                                <Form.Label></Form.Label>
-                                <Form.Control
-                                  type="text"
-                                  placeholder="post Title"
-                                  autoFocus
-                                  onChange={(e) => {
-                                    setTitle(e.target.value);
-                                  }}
-                                />
-                              </Form.Group>
-                              <Form.Group
-                                className="mb-3"
-                                controlId="exampleForm.ControlTextarea1"
-                              >
-                                <Form.Label></Form.Label>
-                                <Form.Control
-                                  as="textarea"
-                                  rows={3}
-                                  placeholder="write your thoughts here"
-                                  onChange={(e) => {
-                                    setbody(e.target.value);
-                                  }}
-                                />
-                              </Form.Group>
-                            </Form>
-                          </Modal.Body>
-                          <Modal.Footer>
-                            <Button variant="secondary" onClick={handleClose}>
-                              Close
-                            </Button>
+      {useState.isLoggedIn ? (
+        <>
+          {" "}
+          <div className="head">
+            <p className="userName">
+              Welcome back <span>{name}</span>
+            </p>
+          </div>
+          <Container className="mind">
+            {" "}
+            <Card>
+              <Card.Header>Make a Post</Card.Header>
+              <Card.Body>
+                <Card.Title>{name} What's on your mind ?</Card.Title>
+                <Form.Group
+                  className="mb-3"
+                  controlId="exampleForm.ControlInput1"
+                >
+                  <Form.Label></Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="post title"
+                    autoFocus
+                    onChange={(e) => {
+                      setTitle(e.target.value);
+                    }}
+                  />
+                </Form.Group>
+                <Form.Group
+                  className="mb-3"
+                  controlId="exampleForm.ControlTextarea1"
+                >
+                  <Form.Label></Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    rows={3}
+                    placeholder="write your thoughts here"
+                    onChange={(e) => {
+                      setbody(e.target.value);
+                    }}
+                  />
+                </Form.Group>
+                <Button
+                  variant="primary"
+                  onClick={() => {
+                    if (body !== "" && title !== "") {
+                      dispatch(
+                        addPost({
+                          userId: id,
+                          title: title,
+                          body: body,
+                        })
+                      );
+                    }
+                  }}
+                >
+                  Post
+                </Button>
+              </Card.Body>
+            </Card>
+          </Container>
+          <Container>
+            <Row>
+              {userState.posts.map((post, index) => {
+                return (
+                  <Col lg={12} className="comm" key={index}>
+                    <Card>
+                      <Card.Header>{post.id}</Card.Header>
+                      <Card.Body>
+                        <Card.Title>{post.title}</Card.Title>
+                        <Card.Text>{post.body}</Card.Text>
+                        {post.userId == id ? (
+                          <>
+                            {" "}
                             <Button
                               variant="primary"
                               onClick={() => {
-                                console.log(
-                                  "title",
-                                  title,
-                                  "id",
-                                  theId,
-                                  "body",
-                                  body
-                                );
-                                dispatch(
-                                  updatePost({
-                                    id: theId,
-                                    title: title,
-                                    body: body,
-                                  })
-                                );
-                                handleClose();
+                                dispatch(deletepost(post.id));
                               }}
                             >
-                              Save Changes
+                              Delete
                             </Button>
-                          </Modal.Footer>
-                        </Modal>
-                      </>
-                    ) : (
-                      <></>
-                    )}
-                  </Card.Body>
-                </Card>
-                <h2 className="unL">comments</h2>
-                {userState.comments.map((comments, i) => {
-                  if (comments.postId === post.id) {
-                    return (
-                      <div className="com">
-                        <div className="insid">
-                          <IoIosContact className="pc" /> <p>{comments.name}</p>
-                        </div>
-                        <div>
-                          {" "}
-                          <p className="conam">{comments.body}</p>
-                        </div>
-                      </div>
-                    );
-                  }
-                })}{" "}
-              </Col>
-            );
-          })}
-        </Row>
-      </Container>
+                            <Button
+                              variant="primary"
+                              className="Ub"
+                              onClick={() => {
+                                setTheId(post.id);
+                                handleShow();
+                              }}
+                            >
+                              Update post
+                            </Button>
+                            <Modal show={show} onHide={handleClose}>
+                              <Modal.Header closeButton>
+                                <Modal.Title>Modal heading</Modal.Title>
+                              </Modal.Header>
+                              <Modal.Body>
+                                <Form>
+                                  <Form.Group
+                                    className="mb-3"
+                                    controlId="exampleForm.ControlInput1"
+                                  >
+                                    <Form.Label></Form.Label>
+                                    <Form.Control
+                                      type="text"
+                                      placeholder="post Title"
+                                      autoFocus
+                                      onChange={(e) => {
+                                        setTitle(e.target.value);
+                                      }}
+                                    />
+                                  </Form.Group>
+                                  <Form.Group
+                                    className="mb-3"
+                                    controlId="exampleForm.ControlTextarea1"
+                                  >
+                                    <Form.Label></Form.Label>
+                                    <Form.Control
+                                      as="textarea"
+                                      rows={3}
+                                      placeholder="write your thoughts here"
+                                      onChange={(e) => {
+                                        setbody(e.target.value);
+                                      }}
+                                    />
+                                  </Form.Group>
+                                </Form>
+                              </Modal.Body>
+                              <Modal.Footer>
+                                <Button
+                                  variant="secondary"
+                                  onClick={handleClose}
+                                >
+                                  Close
+                                </Button>
+                                <Button
+                                  variant="primary"
+                                  onClick={() => {
+                                    console.log(
+                                      "title",
+                                      title,
+                                      "id",
+                                      theId,
+                                      "body",
+                                      body
+                                    );
+                                    dispatch(
+                                      updatePost({
+                                        id: theId,
+                                        title: title,
+                                        body: body,
+                                      })
+                                    );
+                                    handleClose();
+                                  }}
+                                >
+                                  Save Changes
+                                </Button>
+                              </Modal.Footer>
+                            </Modal>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                      </Card.Body>
+                    </Card>
+                    <h2 className="unL">comments</h2>
+                    {userState.comments.map((comments, i) => {
+                      if (comments.postId === post.id) {
+                        return (
+                          <div className="com">
+                            <div className="insid">
+                              <IoIosContact className="pc" />{" "}
+                              <p>{comments.name}</p>
+                            </div>
+                            <div>
+                              {" "}
+                              <p className="conam">{comments.body}</p>
+                            </div>
+                          </div>
+                        );
+                      }
+                    })}{" "}
+                  </Col>
+                );
+              })}
+            </Row>
+          </Container>
+        </>
+      ) : (
+        <>logIN first</>
+      )}
     </>
   );
 };
