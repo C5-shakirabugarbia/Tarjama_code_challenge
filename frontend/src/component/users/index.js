@@ -16,6 +16,7 @@ const Users = () => {
       users: state.users.users,
       posts: state.users.posts,
       albums: state.users.albums,
+      isLoggedIn: state.users.isLoggedIn,
     };
   });
   const getUsers = () => {
@@ -58,41 +59,48 @@ const Users = () => {
   }, []);
   return (
     <>
-      <div className="head">
-        <p className="userName">
-          Welcome back <span>{name}</span>
-        </p>
-      </div>
-      <div className="backg">
-        {" "}
-        <h1>User Info</h1>
-        <Row className="rowd">
-          {userState.users.map((element, index) => {
-            let y = 0;
-            let x = 0;
-            userState.posts.map((post, i) => {
-              if (post.userId === index + 1) {
-                x++;
-              }
-              return x;
-            });
-            userState.albums.map((album, i) => {
-              if (album.userId === index + 1) {
-                y++;
-              }
-              return y;
-            });
+      {userState.isLoggedIn ? (
+        <>
+          {" "}
+          <div className="head">
+            <p className="userName">
+              Welcome back <span>{name}</span>
+            </p>
+          </div>
+          <div className="backg">
+            {" "}
+            <h1>User Info</h1>
+            <Row className="rowd">
+              {userState.users.map((element, index) => {
+                let y = 0;
+                let x = 0;
+                userState.posts.map((post, i) => {
+                  if (post.userId === index + 1) {
+                    x++;
+                  }
+                  return x;
+                });
+                userState.albums.map((album, i) => {
+                  if (album.userId === index + 1) {
+                    y++;
+                  }
+                  return y;
+                });
 
-            return (
-              <Col lg={4} md={6} sm={8} className="cold">
-                <div>User Name : {element.name}</div>
-                <div>number of posts: {x}</div>
-                <div> number of albums: {y}</div>
-              </Col>
-            );
-          })}
-        </Row>
-      </div>
+                return (
+                  <Col lg={4} md={6} sm={8} className="cold">
+                    <div>User Name : {element.name}</div>
+                    <div>number of posts: {x}</div>
+                    <div> number of albums: {y}</div>
+                  </Col>
+                );
+              })}
+            </Row>
+          </div>
+        </>
+      ) : (
+        <>LOGIN</>
+      )}
     </>
   );
 };

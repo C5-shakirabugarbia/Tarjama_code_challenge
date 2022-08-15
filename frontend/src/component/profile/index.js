@@ -41,7 +41,7 @@ const Profile = () => {
   }, []);
   return (
     <>
-      {useState.isLoggedIn ? (
+      {userState.isLoggedIn ? (
         <>
           {" "}
           <div className="head">
