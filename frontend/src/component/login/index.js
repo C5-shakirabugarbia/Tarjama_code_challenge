@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setUsers } from "../../redux/reducers/users";
+import { setUsers, setLogin } from "../../redux/reducers/users";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ const Login = () => {
       }
     });
     if (test === 1) {
-      console.log(true);
+      dispatch(setLogin());
       navigate(`/home/${id}/${name}`);
     }
     if (usertest === 1 && emailtest === 0) {
@@ -86,8 +86,6 @@ const Login = () => {
                 Blog .
               </p>
             </div>
-
-            {/* <img src={img} alt="big logo" className="imm" /> */}
           </Col>
           <Col className="logForm" lg={6} md={6} sm={12}>
             <div className="Up">
@@ -115,8 +113,6 @@ const Login = () => {
               <button
                 className="sub"
                 onClick={() => {
-                  console.log(user);
-                  console.log(email);
                   check();
                 }}
               >

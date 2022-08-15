@@ -2,12 +2,17 @@ import { createSlice } from "@reduxjs/toolkit";
 const users = createSlice({
   name: "users",
   initialState: {
+    isLoggedIn: localStorage.getItem("status") || false,
     users: [],
     posts: [],
     comments: [],
     albums: [],
   },
   reducers: {
+    setLogin: (state, action) => {
+      state.isLoggedIn = true;
+      localStorage.setItem("status", state.isLoggedIn);
+    },
     setUsers: (state, action) => {
       state.users = action.payload;
     },
@@ -47,5 +52,6 @@ export const {
   deletepost,
   addPost,
   updatePost,
+  setLogin,
 } = users.actions;
 export default users.reducer;
