@@ -9,6 +9,10 @@ const users = createSlice({
     albums: [],
   },
   reducers: {
+    setLogOut: (state, action) => {
+      state.isLoggedIn = false;
+      localStorage.removeItem("status");
+    },
     setLogin: (state, action) => {
       state.isLoggedIn = true;
       localStorage.setItem("status", state.isLoggedIn);
