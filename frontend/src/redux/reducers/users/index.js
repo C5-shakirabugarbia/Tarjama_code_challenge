@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const users = createSlice({
   name: "users",
   initialState: {
-    isLoggedIn: localStorage.getItem("status") || false,
+    isLoggedIn: JSON.parse(localStorage.getItem("status")) || false,
     users: [],
     posts: [],
     comments: [],
@@ -57,5 +57,6 @@ export const {
   addPost,
   updatePost,
   setLogin,
+  setLogOut,
 } = users.actions;
 export default users.reducer;

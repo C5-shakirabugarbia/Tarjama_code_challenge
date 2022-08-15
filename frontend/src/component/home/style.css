@@ -32,14 +32,14 @@
    
 }
 .homecontent{
-
-    flex: 1 0 75%;
     background-image: url(../../desktop/pexels-bich-tran-1074920.jpg);
-   
+    flex: 1 0 7%;
     background-size: cover;
     background-repeat: no-repeat;
    
 }
+
+
 
 .sideBarlist li{
     text-align: center;
