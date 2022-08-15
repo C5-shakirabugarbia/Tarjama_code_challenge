@@ -34,7 +34,13 @@ const Home = () => {
           >
             posts
           </li>
-          <li>logout</li>
+          <li
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            logout
+          </li>
         </ul>
         <div className="homecontent"> </div>
       </div>
