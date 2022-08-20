@@ -80,7 +80,7 @@ const Posts = () => {
   }, []);
   return (
     <>
-      {useState.isLoggedIn ? (
+      {userState.isLoggedIn ? (
         <>
           {" "}
           <div className="head">
